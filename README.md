@@ -14,3 +14,4 @@ As the original site of the author was already lost, this program only remains i
 - 22 May, 2018:
     - Citelistbox (the first window) is changed so that the entries are alphabetically sorted.
     - DOI field is added.
+    - Added a function to display BibTeX source and edit it directly (no undo)
