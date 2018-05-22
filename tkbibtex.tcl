@@ -666,6 +666,9 @@ proc create_browse {} {
    }
    pack .browse.reftype.l .browse.reftype.m -side left -anchor w
    pack .browse.reftype  -expand 1 -anchor w
+
+   button .browse.reftype.source -text SOURCE -command show_source
+   pack .browse.reftype.source -side left -anchor w
    
    # look for changes in the global curreftype
    trace variable curreftype w reftypechange_proc
@@ -699,6 +702,39 @@ proc create_browse {} {
    bind .browse <Alt-Key-h> {briefhelp Browse; break}
 }
 
+proc create_sourcewindow {} {
+   toplevel .source
+   text .source.text -width 80 -height 40 -xscrollcommand ".source.xscr set" -yscrollcommand ".source.yscr set"
+   scrollbar .source.xscr -orient horizontal -command ".source.text xview"
+   scrollbar .source.yscr -orient vertical -command ".source.txt yview"
+   grid .source.text -column 0 -row 0 -sticky news
+   grid .source.yscr -column 1 -row 0 -sticky ns
+   grid .source.xscr -column 0 -row 1 -sticky ew
+   frame .source.b
+   grid .source.b -column 0 -row 2
+   button .source.b.ok -text OK -command {source_set; wm withdraw .source}
+   pack .source.b.ok -side left
+   button .source.b.cancel -text Cancel -command {wm withdraw .source}
+   pack .source.b.cancel -side left
+   wm withdraw .source
+}
+
+proc show_source {} {
+   global curkey
+   if {[winfo exists .source] == 0} {
+       create_sourcewindow
+   }
+   wm deiconify .source
+   .source.text delete 1.0 end
+   .source.text insert end [writebib2str $curkey]
+}
+
+proc source_set {} {
+   global curkey
+   set src [.source.text get 1.0 end]
+   bibparse_s $src
+   browse $curkey
+}
 
 # browse the specified cite key, optional arg "-focus" controls
 #  whether the first item of .browse is focused on 
