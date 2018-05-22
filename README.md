@@ -1,4 +1,4 @@
-﻿#Improvement of tkbibtex
+﻿# Improvement of tkbibtex
 
 Akinori Ito, 22 May 2018
 
@@ -9,7 +9,8 @@ I searched any alternative program of JabRef and eventually found tkbibtex.
 
 As the original site of the author was already lost, this program only remains in CTAN. I found this program useful, but at the same time I found several points to be improved. Thus I made a little hack to this program and decided to release it at github.
 
-##Release Note
+## Release Note
+
 - 22 May, 2018:
     - Citelistbox (the first window) is changed so that the entries are alphabetically sorted.
     - DOI field is added.
