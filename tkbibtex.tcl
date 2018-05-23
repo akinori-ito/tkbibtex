@@ -2,6 +2,8 @@
 # the next line restarts using wish \
 #exec wish $0 ${1+"$@"}
 
+package require tooltip
+
 #---------------------------------------------------------------------------
 # tkbibtex - a BibTeX file browser
 # Copyright (c) 1997 Peter Corke	pic@cat.csiro.au
@@ -535,14 +537,17 @@ proc ruecktrafo {string} {
 # --------- end of stuff for the new parsing algorithm by GM ---------
 
 proc update_citelistbox {} {
-   global citelist
+   global citelist REFLIST
    
    # cream the old listbox contents
    .refs.list delete 0 end
    
    # now reinsert all items in citelist order
+   set pos 0
    foreach key [lsort $citelist] {
-      .refs.list insert end $key
+      .refs.list insert $pos $key
+      tooltip::tooltip .refs.list -item $pos $REFLIST($key,title)
+      incr pos
    }
 }
 
