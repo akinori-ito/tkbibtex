@@ -1,4 +1,4 @@
-﻿# Improvement of tkbibtex
+# Improvement of tkbibtex
 
 Akinori Ito, 22 May 2018
 
@@ -15,5 +15,7 @@ As the original site of the author was already lost, this program only remains i
     - Citelistbox (the first window) is changed so that the entries are alphabetically sorted.
     - DOI field is added.
     - Added a function to display BibTeX source and edit it directly (no undo)
-- 25 May, 2018
+- 24 May, 2018
     - The behavior of the first listbox (citelist) is changed so that the citation key shows the title of the paper using tooltip (Requires tooltip package in TkLib)
+    - Menus are changed not to tearoff
+    

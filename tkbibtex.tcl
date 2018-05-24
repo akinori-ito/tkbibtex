@@ -1212,7 +1212,7 @@ proc create_find {} {
    menubutton .find.field.mb -menu .find.field.mb.menu -relief raised\
       -text $find_field
    
-   menu .find.field.mb.menu
+   menu .find.field.mb.menu -tearoff 0
    .find.field.mb.menu add radiobutton -label All -variable find_field -value All 
    foreach i $allfields {
       .find.field.mb.menu add radiobutton -label $i -variable find_field -value $i
@@ -1230,7 +1230,7 @@ proc create_find {} {
    label .find.reftype.l -text "Ref Type:" -width 12 -anchor e
    
    menubutton .find.reftype.mb -menu .find.reftype.mb.menu -relief raised -text $find_reftype
-   menu .find.reftype.mb.menu
+   menu .find.reftype.mb.menu -tearoff 0
    .find.reftype.mb.menu add radiobutton -label All -variable find_reftype -value All
    foreach i $alltypes {
       .find.reftype.mb.menu add radiobutton -label $i -variable find_reftype -value $i
@@ -2066,7 +2066,7 @@ proc create_main {} {
    . configure -menu .mbar
 
    # create the File menu
-   menu .mbar.file
+   menu .mbar.file -tearoff 0
 #   .mbar.file add command -label "New" -underline 0 -command closebib
 #   this might beocme usefull if we can open multiple files...
    .mbar.file add command -label "Open" -underline 0 \
@@ -2086,7 +2086,7 @@ proc create_main {} {
     	-accelerator ^Q -command quit
    
    # create the edit menu
-   menu .mbar.edit
+   menu .mbar.edit -tearoff 0
    .mbar.edit add command -label "New entry" -underline 0 \
        -accelerator N -command {edit_item new}
    .mbar.edit add command -label "Duplicate entry" -underline 1 \
@@ -2111,14 +2111,14 @@ proc create_main {} {
    .mbar.edit add command -label "Sort" -underline 1 -command sortitems
    
    # create the help menu
-   menu .mbar.help
+   menu .mbar.help -tearoff 0
    .mbar.help add command -label "Brief help" -underline 0 \
        -accelerator <F1> -command {briefhelp Keys}
    .mbar.help add command -label "About tkbibtex" -underline 0 \
        -command abouttkbibtex
    
    menubutton .new -relief raised -text "New" -menu .new.menu
-   menu .mbar.edit.new
+   menu .mbar.edit.new -tearoff 0
    foreach i $alltypes {
       .mbar.edit.new add command -label $i  -command "new_item $i"
    }
